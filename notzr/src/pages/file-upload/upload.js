@@ -1,4 +1,4 @@
-import './upload.css';
+
 import React from 'react';
 import {FormControl, FormLabel, Input, Box, Grid, IconButton} from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
