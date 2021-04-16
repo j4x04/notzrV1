@@ -20,11 +20,12 @@ class Upload extends React.Component {
   render() {
     function fileupload(){
       document.getElementById('fileget').click();
+
         }
     return (
-      <Box bg = "#ADD8E6" h = {1300}>
+      <Box bg = "#333" >
         <Navbar/>
-        <Grid templateColumns="repeat(2, 1fr)" gap={2} > 
+        <Grid templateColumns="repeat(2, 1fr)" gap={1} > 
             <Box p = {3} w = {700} ml = {30} mt = {30}>
 
               <FormControl isRequired>
@@ -38,17 +39,7 @@ class Upload extends React.Component {
                   <FormLabel>Description</FormLabel>
                   <Input id = "description"/>
                 </Box> 
-                <Box mt = {35} boxShadow="base" p="6" rounded="md" bg = "#FFFFFF">
-                  <FormLabel>Date: MM/DD/YYYY</FormLabel>
-                  <Input id = "month"/>
-                  <Input id = "date"/>
-                  <Input id = "year"/>
-                </Box> 
 
-                <Box mt = {35} boxShadow="base" p="6" rounded="md" bg = "#FFFFFF"> 
-                  <FormLabel>Name</FormLabel>
-                  <Input id = "name"/>
-                </Box> 
 
                 <Box mt = {35} boxShadow="base" p="6" rounded="md" bg = "#FFFFFF"> 
                   <FormLabel>Course</FormLabel>
@@ -69,7 +60,6 @@ class Upload extends React.Component {
                 w = {500}
                 h = {250}
                 variant="solid"
-                colorScheme="blue"
                 aria-label="Send email"
                 icon={<AddIcon/>}
                 id="file"
@@ -84,6 +74,7 @@ class Upload extends React.Component {
   }
 
   componentDidMount(){
+    var namevar = "Anonymous";
     var fileval = document.getElementById("file");
     const config = {
       apiKey: "AIzaSyC5nFzyJmNWF55RdiMcsIdwCSPaxLn8K20",
@@ -99,14 +90,26 @@ class Upload extends React.Component {
     }else {
       firebase.app();
     }
+
+
+
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        namevar = firebase.auth().currentUser.displayName;
+      }
+      else {
+        window.alert("you are not logged in!")
+      }
+    });
+
+    
     document.getElementById("button").addEventListener("click", function() {
       var titlevar = document.getElementById("title").value;
-      var namevar = document.getElementById("name").value;
       var coursevar = document.getElementById("course").value;
       var schoolvar = document.getElementById("school").value;
-      var datevar = document.getElementById("month").value;
-      datevar += "/"+document.getElementById("date").value;
-      datevar += "/"+document.getElementById("year").value;
+      var today = new Date();
+      var datevar = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
       var descriptionvar = document.getElementById("description").value;
       var filevar = document.getElementById('fileget').files[0];
       var task = firebase.storage().ref(filevar.name).put(filevar);
@@ -122,6 +125,7 @@ class Upload extends React.Component {
       }).catch(function(error) {
           alert("Upload Error" + error);
       });
+      window.alert("upload finished!");
       
     });
   }

@@ -1,6 +1,7 @@
 
 import './catalogue.css';
 import Navbar from './components/Navbar.js'
+import React, { useState } from "react";
 
 import firebase from '@firebase/app';
 import '@firebase/firestore';
@@ -27,6 +28,25 @@ if (!firebase.apps.length) {
 }else {
   firebase.app();
 }
+
+
+
+//auth
+
+var LoginButtonName = "Sign In";
+const [buttonName, setButtonName] = useState("Sign In");
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    setButtonName("Logged in as " + firebase.auth().currentUser.displayName);
+    console.log(LoginButtonName);
+  }
+  else {
+    setButtonName("Log In");
+  }
+});
+
+
+
 
 var storage = firebase.storage();
 var thumbnail = "";
@@ -113,7 +133,7 @@ function getNotesList() {
 
   return (
     <div>
-        <Navbar/>
+        <Navbar buttonName = {buttonName}/>
         <input id="myInput" onKeyUp={getNotesList} placeholder="Search for Notes"></input>
           <ul id="myUL">
           </ul>

@@ -56,8 +56,9 @@ export default function HomePage() {
               px={6}
               _hover={{
                 bg: 'green.500',
-              }}>
-                <NavLink to="/catalogue">Get Started</NavLink>
+              }}
+              onClick = {() => window.location.replace("/catalogue")}>
+                Get Started
             </Button>
             <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
             <NavLink to="/Infopage">Learn More</NavLink>
