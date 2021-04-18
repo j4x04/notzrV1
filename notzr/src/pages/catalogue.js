@@ -1,7 +1,7 @@
 
 import './catalogue.css';
 import Navbar from './components/Navbar.js'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import firebase from '@firebase/app';
 import '@firebase/firestore';
@@ -31,8 +31,8 @@ if (!firebase.apps.length) {
 
 
 
-//auth
 
+//auth
 var LoginButtonName = "Sign In";
 const [buttonName, setButtonName] = useState("Sign In");
 firebase.auth().onAuthStateChanged(function(user) {
@@ -101,18 +101,23 @@ document.getElementById("-MPBN0v8L4KwIaMWPifL").addEventListener("click", functi
   console.log(2);
 })
 */
-setTimeout(function(){
-  document.addEventListener('click', function (event) {
-    console.log(event.target.className);
-    if (list.indexOf(event.target.className) > -1) {
-      localStorage.setItem('notes', event.target.className);
-      window.open("/view");
-      console.log("passed");
-    }
-  }, false);
-}, 3000);
+
+useEffect(() => {
+  setTimeout(function(){
+    document.addEventListener('click', function (event) {
+      console.log(event.target.className);
+      if (list.indexOf(event.target.className) > -1) {
+        localStorage.setItem('notes', event.target.className);
+        window.open("/view");
+        console.log("passed");
+      }
+    }, false);
+  }, 1);
+}, []);
+
 function getNotesList() {
   // Declare variables
+  console.log('get notes yaeah');
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
