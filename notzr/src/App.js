@@ -2,8 +2,8 @@
 import './App.css';
 import * as React from "react"
 import { ChakraProvider } from "@chakra-ui/react"
-import View from './pages/view.js';
-import Catalogue from './pages/catalogue.js';
+import View from './pages/file-viewer/view.js';
+import Catalogue from './pages/catalogue/catalogue.js';
 import Upload from './pages/file-upload/upload.js';
 import Dash from './pages/dashboard/dash.js'
 import Homepage from './pages/homepage.js';
@@ -43,4 +43,5 @@ function App() {
   </ChakraProvider>
   );
 }
+
 export default App;

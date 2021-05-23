@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import ReactGA from 'react-ga';
 import {
   Box,
   Heading,
@@ -61,7 +62,7 @@ export default function HomePage() {
                 Get Started
             </Button>
             <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
-            <NavLink to="/Infopage">Learn More</NavLink>
+            <a href = "https://docs.google.com/document/d/1dTCTipD1pHN_WLt2zQPoy4oWirgL9mkWxsLAQpHdgsE/edit?usp=sharing" target = "_blank">Learn More</a>
             </Button>
             <Box>
               <Icon

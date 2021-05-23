@@ -1,10 +1,10 @@
 #myInput {
     margin-top: 2%;
-    width: 100%; /* Full-width */
+    width: 94%; /* Full-width */
     font-size: 16px; /* Increase font-size */
+    margin-left: 3%; margin-right: 3%;
     padding: 12px 20px 12px 40px; /* Add some padding */
     border: 1px solid #ddd; /* Add a grey border */
-    margin-bottom: 12px; /* Add some space below the input */
   }
   
   #myUL {
@@ -12,12 +12,16 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    height:208px;
+    width: 94%;
+    margin-left: 3%;
+    overflow:hidden; overflow-y:scroll;
   }
   
   #myUL li a {
     border: 1px solid #ddd; /* Add a border to all links */
     margin-top: -1px; /* Prevent double borders */
-    background-color: #f6f6f6; /* Grey background color */
+    background-color: white; /* Grey background color */
     padding: 12px; /* Add some padding */
     text-decoration: none; /* Remove default text underline */
     font-size: 18px; /* Increase the font-size */
@@ -26,7 +30,7 @@
   }
   
   #myUL li a:hover:not(.header) {
-    background-color: #eee; /* Add a hover effect to all links, except for headers */
+    background-color: #adf1c6; /* Add a hover effect to all links, except for headers */
   }
 
   .column {
@@ -43,4 +47,4 @@
       object-fit: cover;
   }
 
-html, body {overflow: auto !important}
+html, body {overflow: scroll !important}

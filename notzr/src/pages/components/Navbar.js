@@ -43,8 +43,9 @@ function Navbar(props) {
   
 
   return (
-    <div className="navbar">
-      <button className = "left" onClick={() => window.location.replace("/catalogue")}>Home</button>
+    <div className="navbar" style={{zIndex:"100"}}>
+       <button onClick={() => window.location.replace("/")}>Home</button>
+      <button className = "left" onClick={() => window.location.replace("/catalogue")}>Catalogue</button>
       <button onClick={() => redirectUpload()}>Upload</button>
       <button className = "login" onClick = {() => signIn()} id = "login">{props.buttonName}</button>
     </div>
