@@ -29,7 +29,7 @@ class Upload extends React.Component {
 
               <FormControl isRequired>
 
-                <Box mt = {35} boxShadow="base" p="6" rounded="md" bg = "#FFFFFF">
+                <Box mt = {35} boxShadow="base" p="6" rounded="md" bg = "#54bb79">
                   <FormLabel>Title</FormLabel>
                   <Input id = "title"/>
                 </Box> 
