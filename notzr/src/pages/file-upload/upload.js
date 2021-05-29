@@ -199,7 +199,7 @@ class Upload extends React.Component {
         var existingNameArray = [];
         firebase.storage().ref("").listAll().then(function(result) { 
           result.items.forEach(function(item) { // loop all files in storage
-            console.log(item.name);
+            //console.log(item.name);
             existingNameArray.push(item.name); // push file names into array
           });// storage ref close
         }).then((snapshot) => { // upload
@@ -210,7 +210,9 @@ class Upload extends React.Component {
           } else {
 
 
-            firebase.storage().ref(thumbnailvar.name).put(thumbnailvar); // upload thumbnail
+            if(thumbnailvar === undefined) {
+              console.log("no thumbnail");
+            } else firebase.storage().ref(thumbnailvar.name).put(thumbnailvar); // upload thumbnail;
         
   
             if(descriptionvar == "") descriptionvar = "N/A"; // set description to N/A if not filled out
