@@ -228,6 +228,8 @@ function getNotesList() {
     <div>
         <Navbar buttonName = {buttonName}/>
         <h1 style={{fontSize:"32px", textAlign: "left", marginLeft: "3%", marginTop: "7%"}}>SEARCH</h1>
+        <p style={{fontSize:"14px", textAlign: "left", marginLeft: "3%"}}>Search to find student-written notes for all standardized IB courses.</p>
+        <p style={{fontSize:"14px", textAlign: "left", marginLeft: "3%"}}>Upload notes to help other IB students!</p>
         <input id="myInput" onKeyUp={getNotesList} placeholder="Search for Notes (Scroll)"></input>
         <ul id="myUL">
         </ul>

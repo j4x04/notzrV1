@@ -40,7 +40,7 @@ export default function HomePage() {
           </Heading>
           <Text color={'gray.500'}>
             You're not alone. Search and find student-written notes for all standardized IB courses, separated into 
-            individual units and categories. Upload notes to help other IB students, and earn rewards for 
+            individual units and categories. Upload notes to help other IB students by providing 
             credible and helpful work.
             
           </Text>
