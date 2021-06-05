@@ -150,7 +150,11 @@ var query = firebase.database().ref("notes").orderByKey();
             thumbnail = getthumbnail(function(){
               if(document.getElementById(getid).innerHTML.indexOf("No notes yet!") > -1){
                 document.getElementById(getid).innerHTML = "";
-            }
+              }
+              if(title.length > 57){
+                title = title.substring(0, 52)+"..."
+              }
+              console.log(title);
                 document.getElementById(getid).innerHTML += "<div class='column'><div class='"+key+"'>"+title+"<img class='"+key+"' style='border: solid; border-width: 1px; object-fit: cover; border-color: grey; height: 450px; width: 80%; margin-left: 10%; margin-bottom: 8%' src='"+thumbnail+"'}></img>"
                 document.getElementById(getid).innerHTML += ""
                 document.getElementById(getid).innerHTML += "</div></div>"
@@ -159,6 +163,8 @@ var query = firebase.database().ref("notes").orderByKey();
             list.push(key);
           }
       })
+      const SLTabs = document.getElementById("SLTabs");
+      SLTabs.scrollLeft = 600;
 })
 async function getthumbnail(callback){
   thumbnailref
@@ -222,20 +228,19 @@ function getNotesList() {
     }
   }
 }
-
-
   return (
     <div>
         <Navbar buttonName = {buttonName}/>
         <h1 style={{fontSize:"32px", textAlign: "left", marginLeft: "3%", marginTop: "7%"}}>SEARCH</h1>
         <p style={{fontSize:"14px", textAlign: "left", marginLeft: "3%"}}>Search to find student-written notes for all standardized IB courses.</p>
-        <p style={{fontSize:"14px", textAlign: "left", marginLeft: "3%"}}>Upload notes to help other IB students!</p>
+        <p style={{fontSize:"14px", textAlign: "left", marginLeft: "3%"}}>Upload notes to help other IB students! Refer to our support document below.</p>
+        <a style={{fontSize:"14px", textAlign: "left", float:"left", marginLeft:"3%",color:"#0645AD", textDecoration: "underline"}} target="_blank" href = "https://docs.google.com/document/u/1/d/1dTCTipD1pHN_WLt2zQPoy4oWirgL9mkWxsLAQpHdgsE/edit?usp=sharing">NOTZR SUPPORT GUIDE</a>
         <input id="myInput" onKeyUp={getNotesList} placeholder="Search for Notes (Scroll)"></input>
         <ul id="myUL">
         </ul>
         <h1 style={{fontSize:"32px", textAlign: "left", marginLeft: "3%", marginTop: "3%"}}>HL CATALOGUE</h1>
           <div style={{marginTop: "2%", marginLeft:"3%", width:"94%", borderWidth:"1px", borderColor:"#cccaca"}}>
-        <Tabs>
+        <Tabs defaultIndex={6}>
           <TabList style={{overflowX: "scroll", overflowY: "hidden"}}>
             <Tab>English: Literature</Tab>
             <Tab>English: Language and Literature</Tab>
@@ -366,8 +371,8 @@ function getNotesList() {
     
     <h1 style={{fontSize:"32px", textAlign: "left", marginLeft: "3%", marginTop: "3%"}}>SL CATALOGUE</h1>
           <div style={{marginTop: "2%", marginLeft:"3%", width:"94%", borderWidth:"1px", borderColor:"#cccaca", marginBottom: "3%"}}>
-        <Tabs>
-          <TabList style={{overflowX: "scroll", overflowY: "hidden"}}>
+        <Tabs defaultIndex={16}>
+          <TabList id="SLTabs" style={{overflowX: "scroll", overflowY: "hidden"}}>
             <Tab>English: Literature</Tab>
             <Tab>English: Language and Literature</Tab>
             <Tab>Spanish ab Initio</Tab>

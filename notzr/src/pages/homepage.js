@@ -84,8 +84,12 @@ export default function HomePage() {
               </Text>
             </Box>
           </Stack>
+
         </Stack>
       </Container>
+
+      <Text color={'gray.500'}>By using our website, you are agreeing to our</Text>
+      <Button variant={'link'} colorScheme={'blue'} size={'sm'}><a href="https://www.websitepolicies.com/policies/view/WcWwyyZJ" target = "_blank">Terms and Conditions</a></Button>
     </>
   );
 }

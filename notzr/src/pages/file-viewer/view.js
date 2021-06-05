@@ -6,7 +6,7 @@ import '@firebase/auth';
 import '@firebase/database'
 import '@firebase/storage';
 import Navbar from '../components/Navbar.js'
-
+import { Button } from "@chakra-ui/react"
 
 function View() {
   const config = {
@@ -68,6 +68,25 @@ function View() {
         console.log("error in calling database")
       })
 
+      var clicked = false;
+      function Report() {
+        if(clicked == false) {
+            var key = localStorage['notes'];
+            var firstid = firebase.database().ref('reports').push({ // push
+              reported:key,
+            }).catch(function(error) {
+              alert("report error: " + error); // error pushing
+          });
+          document.getElementById('button').innerHTML = "A report has been sent for review!";
+          document.getElementById('button').style={background: "none!important",   border:"none",   padding: "0!important",  cursor: "pointer"};
+          clicked = true;
+          }
+          else {}
+      }
+
+
+
+
   return (
     <div>
         <Navbar/>
@@ -90,6 +109,8 @@ function View() {
                 <hr style = {{marginLeft: "10%", marginRight: "10%", marginTop: "2%", marginBottom: "2%"}}></hr>
                 <p style={{fontSize:"12px", textAlign: "left", marginLeft: "10%", color: "#54bb79"}}>Date</p>
                 <p id="date" style = {{fontSize:"18px", textAlign: "left", marginLeft: "10%"}}></p>
+                <hr style = {{marginLeft: "10%", marginRight: "10%", marginTop: "2%", marginBottom: "2%"}}></hr>
+                <Button onClick={() => Report()} id="button" size="lg" style={{float: "left", clear:"left", position: "static", marginLeft: "9.5%", backgroundColor: "#54bb79", color: "white", height:"6%"}}>REPORT</Button>
             </div>
         </div>
     </div>

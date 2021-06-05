@@ -52,7 +52,7 @@ class Upload extends React.Component {
           </div>
           <div style={{marginLeft: "9.5%", marginTop: "3%"}}>
             <p style={{float: "left", padding:"10px"}}>Description: </p>
-            <Input id = "description" placeholder="purpose, any obvious errors" size="lg" style={{width: "60%", float: "left", marginLeft: "2%"}}/>
+            <Input id = "description" placeholder="purpose, any obvious errors (optional)" size="lg" style={{width: "60%", float: "left", marginLeft: "2%"}}/>
           </div>
           <div style={{marginLeft: "9.5%", marginTop: "3%"}}>
             <p style={{float: "left", padding:"10px"}}>Level: </p>
@@ -92,7 +92,11 @@ class Upload extends React.Component {
           </div>
           <div style={{marginLeft: "9.5%", marginTop: "3%"}}>
             <p style={{float: "left", padding:"10px"}}>School: </p>
-            <Input id = "school" placeholder="full (e.g. Upper Canada College)" size="lg" style={{width: "60%", float: "left", marginLeft: "5%"}}/>
+            <Input id = "school" placeholder="full name (e.g. Edithvale High School)" size="lg" style={{width: "60%", float: "left", marginLeft: "5%"}}/>
+          </div>
+          <div style={{marginLeft: "9.5%", marginTop: "3%"}}>
+            <p style={{float: "left", padding:"10px"}}>I have read the</p><a target="_blank" href = "https://www.websitepolicies.com/policies/view/WcWwyyZJ" style={{float: "left", padding:"10px", marginLeft:"-1%", color:"#0645AD", textDecoration: "underline"}}>terms and conditions</a>
+            <input style={{float: "left", marginLeft: "1%", marginTop: "1.2%"}} type="checkbox" id="terms"></input>
           </div>
       </Stack>
       <div style={{marginTop: "3%", float: "left", marginLeft: "10%"}}>
@@ -133,6 +137,7 @@ class Upload extends React.Component {
                   <input id="fileget2" type="file" accept=".jpg,.png,.jpeg,.gif,.HEIC" style={{display: "none"}} onChange={function(){var filevar = document.getElementById('fileget2').files[0].name; document.getElementById("getname2").innerHTML = filevar;}}></input>
                   <p id="getname2" style={{marginTop: "15%", textAlign: "left", marginLeft: "18%", wordWrap: "break-word", width: "300px", position: "absolute"}}>no thumbnail selected</p>
         </div>
+
         <Button id="button" size="lg" style={{float: "left", clear:"left", position: "static", marginTop: "20%", marginLeft: "9.5%", width: "20%", backgroundColor: "#54bb79", color: "white"}}>SUBMIT</Button>
         <div id="snackbar">Uploaded!</div>
       </div>
@@ -181,8 +186,12 @@ class Upload extends React.Component {
       var schoolvar = document.getElementById("school").value;
       var filevar = document.getElementById('fileget').files[0];
       var thumbnailvar = document.getElementById('fileget2').files[0];
+      var istermschecked = document.getElementById('terms').checked;
 
-      
+
+      if(istermschecked == false) {
+        alert("please agree to the terms and conditions");
+      } else {
       if(levelvar == "select HL/SL" || coursevar == "select course") { // MAKE SURE COURSE IS SELECTED
         alert("please fill out all required fields");
       } else if(titlevar == "" || namevar == "" || schoolvar == "" || filevar === undefined ) { // MAKING SURE TITLE/NAME/SCHOOL/FILE ARE FILLED
@@ -248,10 +257,10 @@ class Upload extends React.Component {
 
           }//close else
         });//close .then from duplicate check
+      }// checking for missing input close
 
 
-
-    } // checking for missing input close
+    } // checking for terms
 
     }); // event listener close
   }// componnetdidmount close 
