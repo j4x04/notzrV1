@@ -1,5 +1,5 @@
 # NOTZR
-A free-access notes-sharing platform designed for Toronto IB students. Created by Leo Zhang and Joshua Li.
+A free-access notes-sharing platform designed for Toronto IB students. Created by Leo Zhang and Joshua Li
 
 https://notzr.com
 
