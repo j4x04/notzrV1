@@ -1,7 +1,7 @@
 # NOTZR
 A free-access notes-sharing platform designed for Toronto IB students. Created by Leo Zhang and Joshua Li.
 
-notzr.com
+https://notzr.com
 
 Used React.js, Chakra UI and Firebase (Realtime Database, Storage)
 
